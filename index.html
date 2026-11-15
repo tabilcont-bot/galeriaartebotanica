@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeria Arte Botânica | Cubas Artesanais em Concreto</title>
+  <meta name="description" content="Cubas feitas em concreto com durabilidade, estética mineral e conceito autoral. Entrega grátis em Teresópolis e frete para todo o estado do RJ sob consulta." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #f6f4ef;
+      --bg-secondary: #ece8df;
+      --surface: #ffffff;
+      --text-main: #1f241f;
+      --text-muted: #5a6158;
+      --accent-green: #2d4739;
+      --accent-green-hover: #21352a;
+      --accent-terracotta: #b5654b;
+      --border-subtle: rgba(31, 36, 31, 0.1);
+      --shadow-soft: 0 20px 45px rgba(31, 36, 31, 0.07);
+      --shadow-float: 0 24px 36px rgba(25, 30, 25, 0.22);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(246, 244, 239, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .brand-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--accent-green);
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-terracotta);
+    }
+
+    .btn-header {
+      background-color: var(--accent-green);
+      color: #fff !important;
+      padding: 0.65rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn-header:hover {
+      background-color: var(--accent-green-hover);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-secondary);
+      color: var(--accent-green);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5vw, 4.1rem);
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent-terracotta);
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      background-color: var(--accent-green);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.95rem 1.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 12px 24px rgba(45, 71, 57, 0.22);
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-green-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1.5px solid var(--border-subtle);
+      text-decoration: none;
+      padding: 0.95rem 1.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-green);
+      background-color: var(--bg-secondary);
+    }
+
+    .shipping-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.25rem;
+      background: #ffffff;
+      border-left: 4px solid var(--accent-terracotta);
+      border-radius: 12px;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+    }
+
+    .hero-pedestal {
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #e5dfd2 0%, rgba(236, 232, 223, 0.2) 72%);
+      z-index: 0;
+    }
+
+    .hero-visual img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 460px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 24px;
+      border: 6px solid #ffffff;
+      box-shadow: var(--shadow-float);
+      transition: transform 0.5s ease;
+    }
+
+    .hero-visual:hover img {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .pillars {
+      background-color: var(--bg-secondary);
+      padding: 4.5rem 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-terracotta);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 3.8vw, 2.9rem);
+      margin-bottom: 0.9rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .pillar-card {
+      background: var(--surface);
+      padding: 2.2rem 1.9rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .pillar-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-terracotta);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.55rem;
+      margin-bottom: 0.7rem;
+      color: var(--accent-green);
+    }
+
+    .pillar-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .catalog {
+      padding: 5.5rem 1.5rem;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2.4rem;
+    }
+
+    .cuba-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, #ffffff 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 2rem 1.6rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .cuba-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 26px 50px rgba(31, 36, 31, 0.11);
+    }
+
+    .cuba-stage {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: var(--bg-secondary);
+      margin-bottom: 1.3rem;
+      position: relative;
+      box-shadow: 0 10px 24px rgba(24, 28, 24, 0.12);
+    }
+
+    .cuba-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .cuba-card:hover .cuba-stage img {
+      transform: scale(1.05);
+    }
+
+    .cuba-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-terracotta);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .cuba-card h3 {
+      font-size: 1.55rem;
+      margin-bottom: 0.55rem;
+      color: var(--text-main);
+    }
+
+    .cuba-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+      flex-grow: 1;
+    }
+
+    .btn-cuba {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      background-color: var(--bg-secondary);
+      color: var(--accent-green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-cuba:hover {
+      background-color: var(--accent-green);
+      color: #ffffff;
+    }
+
+    .contact-section {
+      padding: 5rem 1.5rem;
+      background-color: var(--accent-green);
+      color: #f6f4ef;
+    }
+
+    .contact-box {
+      max-width: 1050px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .contact-box p {
+      color: rgba(246, 244, 239, 0.85);
+      margin-bottom: 1.5rem;
+      font-size: 1.02rem;
+    }
+
+    .delivery-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .delivery-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 0.85rem 1.1rem;
+      border-radius: 14px;
+      font-size: 0.95rem;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .channel-card {
+      background: #ffffff;
+      color: var(--text-main);
+      padding: 1.6rem;
+      border-radius: 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: transform 0.25s ease;
+    }
+
+    .channel-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .channel-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .channel-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+
+    .channel-arrow {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--accent-green);
+      flex-shrink: 0;
+    }
+
+    footer {
+      background: #18231c;
+      color: rgba(246, 244, 239, 0.7);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.88rem;
+    }
+
+    footer strong {
+      color: #ffffff;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      background-color: #25d366;
+      color: #ffffff;
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
+      transition: transform 0.25s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 900px) {
+      .hero, .contact-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links a:not(.btn-header) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <span class="brand-title">Galeria Arte Botânica</span>
+        <span class="brand-sub">Arquitetura Mineral &amp; Design Autoral</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#conceito">Conceito</a>
+        <a href="#colecao">Coleção de Cubas</a>
+        <a href="#entrega">Entrega &amp; Contato</a>
+        <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20cubas%20da%20Galeria%20Arte%20Bot%C3%A2nica." target="_blank" rel="noopener" class="btn-header">Falar no WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="badge-top">Concreto Arquitetônico • Feito à Mão</span>
+      <h1>Cubas em concreto com <em>durabilidade</em> e conceito.</h1>
+      <p>
+        Na <strong>Galeria Arte Botânica</strong>, cada cuba é esculpida artesanalmente em concreto de alto desempenho. Texturas orgânicas, pigmentação mineral e resistência pensadas para transformar lavabos e banheiros em espaços de contemplação.
+      </p>
+      <div class="hero-actions">
+        <a href="#colecao" class="btn-primary">Explorar Modelos</a>
+        <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Galeria%20Arte%20Bot%C3%A2nica%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20cubas." target="_blank" rel="noopener" class="btn-secondary">Consultar Medidas e Valores</a>
+      </div>
+      <div class="shipping-pill">
+        <span>🚚</span>
+        <span><strong>Entrega grátis em Teresópolis</strong> • Frete para todo o estado do RJ sob consulta.</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-pedestal"></div>
+      <img src="imagens/cuba_1.jpg" alt="Cuba Redonda em Concreto Escuro Galeria Arte Botânica" />
+    </div>
+  </section>
+
+  <section id="conceito" class="pillars">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Essência da Matéria</span>
+        <h2>Por que escolher uma cuba em concreto?</h2>
+        <p>Unimos engenharia de materiais e sensibilidade botânica para criar peças únicas, onde nenhuma textura se repete.</p>
+      </div>
+
+      <div class="pillars-grid">
+        <article class="pillar-card">
+          <span class="pillar-number">01</span>
+          <h3>Alta Durabilidade</h3>
+          <p>Traço estrutural de concreto aditivado e impermeabilização profissional contra umidade, manchas e uso diário intenso.</p>
+        </article>
+
+        <article class="pillar-card">
+          <span class="pillar-number">02</span>
+          <h3>Conceito Autoral</h3>
+          <p>Veios naturais, nuances terrosas e acabamentos minerais que dialogam perfeitamente com madeira, pedra e plantas.</p>
+        </article>
+
+        <article class="pillar-card">
+          <span class="pillar-number">03</span>
+          <h3>Peças Exclusivas</h3>
+          <p>Produção artesanal sob rigoroso cuidado estético. Cada peça carrega sua própria identidade cromática e tátil.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="colecao" class="catalog">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Catálogo Exclusivo</span>
+        <h2>Nossas Cubas em Concreto</h2>
+        <p>Visualize cada modelo em destaque. Para medidas exatas, disponibilidade e encomendas personalizadas, fale diretamente conosco.</p>
+      </div>
+
+      <div class="catalog-grid">
+        <article class="cuba-card">
+          <div class="cuba-stage">
+            <img src="imagens/cuba_1.jpg" alt="Cuba Redonda Grafite Polido" />
+          </div>
+          <span class="cuba-tag">Linha Orgânica</span>
+          <h3>Cuba Redonda Basalto</h3>
+          <p>Formato circular minimalista em tom grafite profundo com acabamento acetinado de alta resistência.</p>
+          <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Cuba%20Redonda%20Basalto." target="_blank" rel="noopener" class="btn-cuba">Mais informações no WhatsApp</a>
+        </article>
+
+        <article class="cuba-card">
+          <div class="cuba-stage">
+            <img src="imagens/cuba_2.jpg" alt="Cuba Retangular Cinza e Óxido" />
+          </div>
+          <span class="cuba-tag">Linha Industrial</span>
+          <h3>Cuba Cinza &amp; Óxido</h3>
+          <p>Concreto natural cinza com detalhes em efeito corten na borda, trazendo personalidade urbana e rústica.</p>
+          <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Cuba%20Cinza%20%26%20%C3%93xido." target="_blank" rel="noopener" class="btn-cuba">Mais informações no WhatsApp</a>
+        </article>
+
+        <article class="cuba-card">
+          <div class="cuba-stage">
+            <img src="imagens/cuba_3.jpg" alt="Cuba Retangular Ébano e Terra" />
+          </div>
+          <span class="cuba-tag">Linha Mineral</span>
+          <h3>Cuba Ébano &amp; Terra</h3>
+          <p>Fusão artística entre concreto escuro e pigmentação terrosa texturizada com brilho protetor.</p>
+          <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Cuba%20%C3%89bano%20%26%20Terra." target="_blank" rel="noopener" class="btn-cuba">Mais informações no WhatsApp</a>
+        </article>
+
+        <article class="cuba-card">
+          <div class="cuba-stage">
+            <img src="imagens/cuba_4.jpg" alt="Cuba Terracota Suave Marmorizada" />
+          </div>
+          <span class="cuba-tag">Linha Botânica</span>
+          <h3>Cuba Terracota Marmorizada</h3>
+          <p>Tom terracota claro com sutis nuances azul-acinzentadas, ideal para lavabos iluminados e acolhedores.</p>
+          <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Cuba%20Terracota%20Marmorizada." target="_blank" rel="noopener" class="btn-cuba">Mais informações no WhatsApp</a>
+        </article>
+
+        <article class="cuba-card">
+          <div class="cuba-stage">
+            <img src="imagens/cuba_5.jpg" alt="Cuba Geométrica Azul Petróleo" />
+          </div>
+          <span class="cuba-tag">Linha Contemporânea</span>
+          <h3>Cuba Geométrica Azul Mineral</h3>
+          <p>Linhas retas marcantes, válvula oculta rebaixada e pigmentação azul-petróleo mesclada ao concreto.</p>
+          <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Cuba%20Geom%C3%A9trica%20Azul%20Mineral." target="_blank" rel="noopener" class="btn-cuba">Mais informações no WhatsApp</a>
+        </article>
+
+        <article class="cuba-card">
+          <div class="cuba-stage">
+            <img src="imagens/cuba_6.jpg" alt="Cuba Retangular Cacau Rústico" />
+          </div>
+          <span class="cuba-tag">Linha Terra</span>
+          <h3>Cuba Cacau Rústico</h3>
+          <p>Acabamento amadeirado e terroso em concreto selado, criando calor visual sem abrir mão da resistência.</p>
+          <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Cuba%20Cacau%20R%C3%BAstico." target="_blank" rel="noopener" class="btn-cuba">Mais informações no WhatsApp</a>
+        </article>
+
+        <article class="cuba-card">
+          <div class="cuba-stage">
+            <img src="imagens/cuba_7.jpg" alt="Cuba Verde Musgo e Ocre" />
+          </div>
+          <span class="cuba-tag">Linha Floresta</span>
+          <h3>Cuba Musgo &amp; Ocre</h3>
+          <p>Inspirada na mata serrana de Teresópolis, combina tons de verde musgo e ocre em acabamento vitrificado.</p>
+          <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20Cuba%20Musgo%20%26%20Ocre." target="_blank" rel="noopener" class="btn-cuba">Mais informações no WhatsApp</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="entrega" class="contact-section">
+    <div class="contact-box">
+      <div>
+        <span class="section-eyebrow" style="color: #e4b6a6;">Atendimento Direto</span>
+        <h2>Mais informações pelos nossos canais de contato</h2>
+        <p>
+          Tire dúvidas sobre dimensões, instalação, cores sob encomenda e prazos de entrega diretamente com nossa equipe.
+        </p>
+
+        <div class="delivery-highlights">
+          <div class="delivery-item">
+            <span>✅</span>
+            <span><strong>Entrega grátis em Teresópolis</strong> — receba sua cuba sem custo adicional na cidade.</span>
+          </div>
+          <div class="delivery-item">
+            <span>📦</span>
+            <span><strong>Frete para todo o estado do Rio de Janeiro sob consulta</strong> — envio seguro e embalado sob medida.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-cards">
+        <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20cubas%20da%20Galeria%20Arte%20Bot%C3%A2nica." target="_blank" rel="noopener" class="channel-card">
+          <div>
+            <span class="channel-label">WhatsApp &amp; Orçamentos</span>
+            <span class="channel-value">(21) 98494-6997</span>
+          </div>
+          <span class="channel-arrow">→</span>
+        </a>
+
+        <a href="https://www.instagram.com/galeriaartebotanica" target="_blank" rel="noopener" class="channel-card">
+          <div>
+            <span class="channel-label">Instagram Oficial</span>
+            <span class="channel-value">@galeriaartebotanica</span>
+          </div>
+          <span class="channel-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Galeria Arte Botânica</strong> — Cubas artesanais em concreto • Teresópolis, RJ</p>
+    <p style="margin-top: 0.4rem;">WhatsApp: (21) 98494-6997 | Instagram: @galeriaartebotanica</p>
+  </footer>
+
+  <a href="https://wa.me/5521984946997?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20cubas%20da%20Galeria%20Arte%20Bot%C3%A2nica." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contato via WhatsApp">
+    <span>💬</span>
+    <span>WhatsApp (21) 98494-6997</span>
+  </a>
+
+</body>
+</html>
